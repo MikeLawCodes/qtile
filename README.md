@@ -11,6 +11,6 @@ RoadMap: Fully theme the WM and Stock Bar,
                                    Removeable media(Flash Drives),
                                    Clickable Rofi button,
                                    Right Click menu(similar to awesomewm),
-                                   
+                                   Script & Button for theme changing
 
                                    
