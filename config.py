@@ -25,12 +25,12 @@
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+#from libqtile.utils import guess_terminal
 import subprocess
 import os
-import re
+
 from libqtile import hook
-from theme import catppuccin
+from theme import tokyonight 
 
 
 #Variables and Programs
@@ -42,7 +42,7 @@ myAppLauncher = "./.config/rofi/launchers/type-1/launcher.sh"
 myFileManager = "pcmanfm"
 myBrowser = "firefox"
 myEditor = "neovim"
-
+myMusic = "Spotify"
 
 
 keys = [
@@ -140,14 +140,14 @@ for i in groups:
 layouts = [
     layout.MonadTall(
         border_width = 2,
-        border_focus = catppuccin["Sapphire"],
-        border_normal = catppuccin["Lavender"],
+        border_focus = tokyonight["Sapphire"],
+        border_normal = tokyonight["Lavender"],
         margin = 25,
         ),
     layout.MonadWide(
         border_width = 2,
-        border_focus = catppuccin["Sapphire"],
-        border_normal = catppuccin["Lavender"],
+        border_focus = tokyonight["Sapphire"],
+        border_normal = tokyonight["Lavender"],
         margin = 10,
         ),
    # layout.Floating(
@@ -164,8 +164,8 @@ layouts = [
     # layout.RatioTile(),
     layout.Tile( 
         border_width = 2,
-        border_focus = catppuccin["Sapphire"],
-        border_normal = catppuccin["Lavender"],
+        border_focus = tokyonight["Sapphire"],
+        border_normal = tokyonight["Lavender"],
         margin = 10,
         ),
    # layout.TreeTab(  
@@ -198,26 +198,27 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.CurrentLayout(foreground=tokyonight["White"]),
+                widget.GroupBox(foreground=tokyonight["White"]),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(foreground=tokyonight["White"]),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-        #        widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-d&gt; Rofi", foreground=catppuccin["Red"]),
+        widget.TextBox("Press &lt;M-d&gt; Rofi", foreground=tokyonight["Orange"]),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Clock(format="%I:%M %p||%a/%m/%d",
+                             foreground=tokyonight["Sapphire"]),
+                widget.QuickExit(foreground=tokyonight["Red"]),
             ],
-            32,
+            42,
             border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            border_color=catppuccin["Sapphire"]
-            #border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            border_color=tokyonight["Sapphire"],
+            background=tokyonight["BG"],
+            opacity= 0.9,
         ),
     ),
 ]
@@ -283,3 +284,7 @@ wmname = "LG3D"
 @hook.subscribe.startup_once
 def start_once():
     subprocess.call([home + '/.config/qtile/autostart.sh'])
+
+
+
+

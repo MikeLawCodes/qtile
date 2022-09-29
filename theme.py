@@ -27,3 +27,23 @@ catppuccin = {
 "Crust"     : "#11111b",  
 }
 
+tokyonight = {
+
+"Red"       : "#f7768e",
+"Orange"    : "#ff9e64",
+"Lorange"   : "#e0af68",
+"Green"     : "#9ece6a",
+"Teal"      : "#73daca",
+"BTeal"     : "#b4f9f8",
+"Sapphire"  : "#2ac3de",
+"LBlue"     : "#7dcfff",
+"Blue"      : "#7aa2f7",
+"Purple"    : "#bb9af7",
+"White"     : "#c0caf5",
+"Text"      : "#a9b1d6",
+"Lavender"  : "#9aa5ce",
+"Beige"     : "#cfc9c2",
+"Comment"   : "#565f89",
+"Black"     : "#414868",
+"BG"        : "#24283b",
+}
