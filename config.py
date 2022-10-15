@@ -37,8 +37,8 @@ from theme import tokyonight
 mod = "mod4"
 terminal = "alacritty"
 home = os.path.expanduser('~')
-#myAppLauncher = "rofi -show drun" 
-myAppLauncher = "./.config/rofi/launchers/type-1/launcher.sh"
+myAppLauncher = "rofi -show drun" 
+#myAppLauncher = "./.config/rofi/launchers/type-1/launcher.sh"
 myFileManager = "pcmanfm"
 myBrowser = "firefox"
 myEditor = "neovim"
@@ -196,25 +196,22 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(foreground=tokyonight["White"]),
+               widget.CurrentLayoutIcon(scale=0.8),
                 widget.GroupBox(foreground=tokyonight["White"]),
-                widget.Prompt(),
                 widget.WindowName(foreground=tokyonight["White"]),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-        widget.TextBox("Press &lt;M-d&gt; Rofi", foreground=tokyonight["Orange"]),
                 widget.Systray(),
-                widget.Clock(format="%I:%M %p||%a/%m/%d",
+                widget.Clock(format="%I:%M||%a||%m/%d",
                              foreground=tokyonight["Sapphire"]),
-                widget.QuickExit(foreground=tokyonight["Red"]),
+                widget.CheckUpdates(distro='Debian', no_update_string='N|A',
+                                    color_have_updates=tokyonight["Sapphire"],
+                                    color_no_updates=tokyonight["White"]),
+                widget.QuickExit(default_text='[X]', 
+                                 countdown_format='[{}]',
+                                 foreground=tokyonight["Red"]),
             ],
-            42,
+            32,
             border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             border_color=tokyonight["Sapphire"],
             background=tokyonight["BG"],
@@ -237,7 +234,6 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
     float_rules=[
-
         # Run the utility of `xprop` to see the wm class and name of an X client.
         
         *layout.Floating.default_float_rules,
@@ -268,16 +264,8 @@ auto_minimize = True
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, GitHub issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
+# Java Whitelist
 wmname = "LG3D"
-
 
 #Hooks
 #Calls Startup Apps
