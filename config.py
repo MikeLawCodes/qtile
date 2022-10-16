@@ -189,7 +189,7 @@ layouts = [
 
 widget_defaults = dict(
     font = "FiraCode Nerd Fonts",
-    fontsize = 14,
+    fontsize = 20,
     padding = 3,
 )
 extension_defaults = widget_defaults.copy()
@@ -211,7 +211,7 @@ screens = [
                                  countdown_format='[{}]',
                                  foreground=tokyonight["Red"]),
             ],
-            32,
+            48,
             border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             border_color=tokyonight["Sapphire"],
             background=tokyonight["BG"],
@@ -271,7 +271,8 @@ wmname = "LG3D"
 #Calls Startup Apps
 @hook.subscribe.startup_once
 def start_once():
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
+    subprocess.call([home + '/.config/qtile/autostart.sh']),
+    subprocess.call([home + '/.config/qtile/autostart.sh']),
 
 
 
